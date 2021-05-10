@@ -25,8 +25,8 @@ The technologies I used for this app are as follows:
 2. Change `MYSQL_HOST`,`MYSQL_USER`,``MYSQL_PASSQORD` and `MYSQL_DB`  in `app.py` to match with your db in MySQL. 
 3. Add the following libraries using `pip install ` 
     1. `Flask`
-    2. `Flask-mysqldb`
-    3. `Flask-wtf`
+    2. `Flask_mysqldb`
+    3. `Flask_wtf`
     4. `passlib`
     5. `werkzeug`
     6. `WTForms`
