@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <div class="container">
+    <p><h1>Dashboard</h1><p>
+    <h4> Welcome {{session.username}} </h3>
+    <br>
+
+    {%if msg%}
+      <p>{{msg}}<p>
+    {%endif%}
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {{ messages[0]}}
+        {% endif %}
+    {% endwith %}
+
+    <p> 
+    <table class="table table-striped" style="text-align:center">
+      <tr>
+        <th>UserName</th>
+        <th>Photo Name</th>
+        <th>Date</th>
+        <th>Visibility</th>
+        <th></th>
+        <th></th>
+      </tr>
+      {% for article in articles %}
+        <tr>
+          <td>{{article.username}}</td>
+          <td><a href="/displayimage/{{article.photo_name}}"> {{article.photo_name}}</td>
+          <td>{{article.ul_date}}</td>
+          {% if article.privacy == 0%}
+          <td>Public</td>
+          {% else %}
+          <td>Private</td>
+          {% endif%}
+          <td><a href="edit_image/{{article.id}}" class="btn btn-primary float-right">Edit</a></td>
+          <td>
+            <form action="{{url_for('delete_article', id=article.photo_name)}}" method="post">
+              <input type="hidden" name="_method" value="DELETE">
+              <input type="submit" value="Delete" class="btn btn-danger">
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
+{% endblock %}

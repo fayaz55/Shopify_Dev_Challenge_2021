@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <p>
+        <h1>Upload Image</h1>
+        <hr>
+
+        <form action ="/upload" method="POST" enctype="multipart/form-data"> 
+          <div class="form-group">
+            <label><b>Select image:</b></label>
+            <div class="custom-file">
+              <input type="file" class="form-control-file" name="image" id="customFile" >
+            </div>
+            <label><b>Select Visibility: </b></label>
+            <br>
+            <input type="radio" name="visibility" id="private" value="1" checked> Private <br>
+            <input type="radio" name="visibility" id="public" value="0"> Public <br>
+            <br>
+            <button type="submit" class="btn btn-primary">Add File</button>
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                {%for x in messages%}
+                  {{x}}
+                {%endfor%}
+              {% endif %}
+            {% endwith %}
+          </div>
+        </form>
+      </div>
+    </div>
+   </div> 
+
+{% endblock %}

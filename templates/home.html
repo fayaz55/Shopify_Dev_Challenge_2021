@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <div class ="jumbotron text-center">
+        <h1>Welome To ImageRepo</h1>
+    <p class = "lead">This app is built on python Flask. Scroll down to view images in the gallery.</p>
+    <p class = "lead">Register/Login to add pictures <p>
+    </div>
+
+    <div class="container">
+      <table class="table table-striped">
+        <tr>
+          <th>name</th>
+          <th>photo</th>
+          <th>Date</th>
+          <th></th>
+          <th></th>
+        </tr>
+        {% for article in articles %}
+          <tr>
+            <td>{{article.username}}</td>
+            <td><a href="/displayimage/{{article.photo_name}}">{{article.photo_name}}</td>
+            <td>{{article.ul_date}}</td>
+        <tr>
+        {% endfor %}
+      </table>
+    </div>
+{% endblock%}

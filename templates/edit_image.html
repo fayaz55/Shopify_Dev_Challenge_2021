@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <div class="container">
+    <p>
+    <h1>Edit Article</h1>
+    {% from "includes/_formhelpers.html" import render_field %}
+    <p>
+    <form method="POST" action="">
+      <div class="form-row">
+        <div class="col"> 
+        {{ render_field(form.filename, class_="form-control") }}
+        </div>
+        <div class="col"> 
+        {{ render_field(form.file_type, class_="form-control") }}
+        </div>
+      </div>
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {{ messages[0]}}
+        {% endif %}
+      {% endwith %}
+
+      <br>
+      <label><b>Select Visibility: </b></label>
+      <br>
+      <input type="radio" name="visibility" id="private" value="1" checked> Private <br>
+      <input type="radio" name="visibility" id="public" value="0"> Public <br>
+      <br>
+      <p><input class="btn btn-primary" type="submit" value="Submit">
+    </form>
+  </div>
+{% endblock %}
